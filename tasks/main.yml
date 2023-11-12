@@ -1,0 +1,17 @@
+---
+- name: Check the presence of the kind binary.
+  stat:
+    path: "{{ kind_bin_path }}"
+  register: kind_check
+
+- name: Check the kind version.
+  shell: "{{ kind_bin_path }} --version"
+  failed_when: false
+  changed_when: false
+  register: kind_current_version
+
+- name: Install kind v{{ kind_version }}
+  include_tasks: install.yml
+  when: >-
+    not kind_check.stat.exists
+    or kind_version not in kind_current_version.stdout

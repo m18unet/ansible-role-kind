@@ -1,0 +1,19 @@
+---
+- name: Verify
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars_files:
+    - ../../defaults/main.yml
+
+  tasks:
+    - name: Check the kind version.
+      command: "{{ kind_bin_path }} --version"
+      changed_when: false
+      register: kind_verify_version
+
+    - name: Verify kind's version is {{ kind_version }}
+      assert:
+        that:
+          - kind_version in kind_verify_version.stdout
