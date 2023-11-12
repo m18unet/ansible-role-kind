@@ -6,7 +6,6 @@
 
   vars:
     kind_version: '0.18.0'
-    kind_arch: x86_64
 
   roles:
     - m18unet.kind

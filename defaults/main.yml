@@ -4,5 +4,5 @@ kind_version: '0.20.0'
 kind_platform: linux
 kind_arch: amd64
 kind_bin_path: /usr/local/bin/kind
-kind_download_url: https://github.com/kubernetes-sigs/kind/releases/download/v{{ kind_version }}//kind-{{ kind_platform }}-amd64
+kind_download_url: https://github.com/kubernetes-sigs/kind/releases/download/v{{ kind_version }}//kind-{{ kind_platform }}-{{ kind_arch }}
 kind_checksum_url: "{{ kind_download_url }}.sha256sum"
